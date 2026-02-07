@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TUDA Logbook</title>
+    <style>
+      body {
+        font-family: "Inter", "Segoe UI", sans-serif;
+        background: #0b0f14;
+        color: #e5e7eb;
+        margin: 0;
+        padding: 2rem;
+      }
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      .subtitle {
+        color: #9ca3af;
+        margin-bottom: 2rem;
+      }
+      .entry {
+        border: 1px solid #1f2937;
+        border-radius: 12px;
+        padding: 1.25rem;
+        margin-bottom: 1rem;
+        background: #111827;
+      }
+      .entry h2 {
+        margin-top: 0;
+        font-size: 1.1rem;
+      }
+      .meta {
+        display: grid;
+        gap: 0.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        color: #cbd5f5;
+      }
+      .pill {
+        display: inline-block;
+        padding: 0.15rem 0.6rem;
+        border-radius: 999px;
+        background: #1e293b;
+        margin-right: 0.3rem;
+        font-size: 0.75rem;
+        color: #e0e7ff;
+      }
+      .empty {
+        padding: 2rem;
+        border: 1px dashed #374151;
+        border-radius: 12px;
+        text-align: center;
+        color: #9ca3af;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>TUDA Logbook</h1>
+    <div class="subtitle">Latest captured metadata entries.</div>
+
+    {% if entries %}
+      {% for entry in entries %}
+        <div class="entry">
+          <h2>{{ entry.subject or "(no subject)" }}</h2>
+          <div><strong>From:</strong> {{ entry.sender }}</div>
+          <div><strong>To:</strong> {{ entry.recipient }}</div>
+          <div><strong>Timestamp:</strong> {{ entry.timestamp }}</div>
+          <div class="meta">
+            <div><strong>Message ID:</strong> {{ entry.message_id }}</div>
+            <div><strong>Fingerprint:</strong> {{ entry.fingerprint }}</div>
+            <div>
+              <strong>IPs:</strong>
+              {% if entry.ips %}
+                {% for ip in entry.ips %}<span class="pill">{{ ip }}</span>{% endfor %}
+              {% else %}
+                <span class="pill">none</span>
+              {% endif %}
+            </div>
+            <div>
+              <strong>Tags:</strong>
+              {% if entry.tags %}
+                {% for tag in entry.tags %}<span class="pill">{{ tag }}</span>{% endfor %}
+              {% else %}
+                <span class="pill">none</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="empty">No entries yet. Run TUDA to capture metadata.</div>
+    {% endif %}
+  </body>
+</html>

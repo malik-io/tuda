@@ -1,0 +1,8 @@
+{
+  "domain": "localhost",
+  "port": 2525,
+  "plugin_dir": "plugins",
+  "plugins": ["plugins/example.py"],
+  "logbook_path": "logbook.sqlite",
+  "watch_dir": "inbox"
+}
