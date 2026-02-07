@@ -1,0 +1,7 @@
+{
+  "listen_host": "127.0.0.1",
+  "listen_port": 2525,
+  "database_path": "logbook.sqlite",
+  "enable_ui": false,
+  "plugins": []
+}
