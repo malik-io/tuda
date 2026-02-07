@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-02-07T03:15:51.868695+00:00",
+  "runtime_mode": "cpu",
+  "warning": "Consciousness will be slow",
+  "requirements": {
+    "min_vram_mb": 4096
+  },
+  "cuda_detected": false,
+  "vram_requirement_met": false,
+  "torch": {
+    "available": false,
+    "cuda_version": null,
+    "gpus": [],
+    "torch_error": "No module named 'torch'"
+  },
+  "nvidia_smi": {
+    "available": false,
+    "error": "[Errno 2] No such file or directory: 'nvidia-smi'",
+    "gpus": []
+  },
+  "gpus": []
+}
